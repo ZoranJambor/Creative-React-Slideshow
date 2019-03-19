@@ -1,0 +1,176 @@
+.figure {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.figure__img-container {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.figure__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.figure__caption-container {
+    position: absolute;
+    z-index: 300;
+    top: auto;
+    bottom: 30px;
+    left: auto;
+    right: 0.7em;
+    width: 350px;
+    height: auto;
+    font-size: 1.3em;
+    text-align: right;
+}
+
+.figure__caption-content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.figure__caption {
+    position: static;
+    display: inline;
+    padding: 0.45em 0 0.5em;
+    line-height: 2.4;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0.7em 0 0 rgba(0, 0, 0, 0.5), -0.7em 0 0 rgba(0, 0, 0, 0.5);
+
+    /* Required for Firefox, otherwise, box-shadow is
+     stripped from individual lines of a paragraph */
+    box-decoration-break: clone;
+}
+
+.figure__link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.figure__link:hover {
+    color: #fff;
+}
+
+/* Image Fade Animation */
+.figure__img-animation-enter {
+    opacity: 0;
+}
+
+.figure__img-animation-enter.figure__img-animation-enter-active {
+    opacity: 1;
+    transition: all 500ms ease-in;
+}
+
+.figure__img-animation-exit {
+    opacity: 1;
+}
+
+.figure__img-animation-exit.figure__img-animation-exit-active {
+    transition: all 500ms ease-in;
+    opacity: 0;
+}
+
+/* Caption Slide Animation */
+.figure__caption-animation-enter {
+    clip-path: polygon(315px -5px, 110% -5px, 150% 110%, 420px 110%);
+}
+
+.figure__caption-animation-enter.figure__caption-animation-enter-active {
+    clip-path: polygon(-270px -5px, 110% -5px, 150% 110%, -160px 110%);
+    transition: clip-path 1000ms ease-in;
+    transition-delay: 1000ms;
+}
+
+.figure__caption-animation-exit {
+    clip-path: polygon(-270px -5px, 110% -5px, 150% 110%, -160px 110%);
+}
+
+.figure__caption-animation-exit.figure__caption-animation-exit-active {
+    transition: clip-path 1000ms ease-in;
+    clip-path: polygon(315px -5px, 110% -5px, 150% 110%, 420px 110%);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 1300px) {
+    .figure__caption-container {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .figure__caption-container {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 960px) {
+    .figure__caption-container {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 830px) {
+    .figure__caption {
+        padding: 0;
+    }
+
+    .figure__caption-container {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .figure__caption-content {
+        transform: rotate(-90deg);
+        right: 0.4em;
+        width: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .figure__caption-content br {
+        display: none;
+    }
+
+    /* Caption Slide Animation */
+    .figure__caption-animation-enter {
+        clip-path: none;
+        right: -100px;
+    }
+
+    .figure__caption-animation-enter.figure__caption-animation-enter-active {
+        clip-path: none;
+        transition: right 1000ms ease-in;
+        transition-delay: 1000ms;
+        right: 0.4em;
+    }
+
+    .figure__caption-animation-exit {
+        clip-path: none;
+        right: 0.4em;
+    }
+
+    .figure__caption-animation-exit.figure__caption-animation-exit-active {
+        clip-path: none;
+        right: -100px;
+        transition: right 1000ms ease-in;
+    }
+}

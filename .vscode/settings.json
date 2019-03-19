@@ -1,0 +1,8 @@
+{
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5",
+    "files.exclude": {
+        "**/public": false,
+    },
+    "prettier.stylelintIntegration": true,
+}

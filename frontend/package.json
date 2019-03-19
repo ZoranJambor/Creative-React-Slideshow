@@ -1,0 +1,35 @@
+{
+  "name": "creative-slideshow",
+  "version": "1.0.0",
+  "private": false,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "jest-fetch-mock": "^2.1.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-render-html": "^0.6.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "react-testing-library": "^6.0.0",
+    "react-transition-group": "^2.6.0",
+    "stylelint-config-recommended": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start & node ../backend/server.js",
+    "start-concurrently": "concurrently \"npm:start-server\" \"npm:start-react\"",
+    "start-react": "react-scripts start",
+    "start-server": "node ../backend/server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

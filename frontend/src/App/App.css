@@ -1,0 +1,159 @@
+/* Site-wide CSS rules */
+.content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content__article {
+  position: absolute;
+  z-index: 200;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 70px;
+  width: 20em;
+  max-width: 90%;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.content__headline,
+.content__text>p {
+  position: static;
+  display: inline;
+  padding: 0.25em 0 0.355em;
+  line-height: 2;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0.7em 0 0 rgba(0, 0, 0, 0.7), -0.7em 0 0 rgba(0, 0, 0, 0.7);
+
+  /* Required for Firefox, otherwise, box-shadow is
+     stripped from individual lines of a paragraph */
+  box-decoration-break: clone;
+}
+
+.content__text>p::before {
+  content: '';
+  display: block;
+  height: 1em;
+}
+
+.content__headline {
+  font-size: 1.4em;
+  box-shadow: 0.5em 0 0 rgba(0, 0, 0, 0.7), -0.5em 0 0 rgba(0, 0, 0, 0.7);
+}
+
+.content__text a {
+  color: inherit;
+}
+
+@media (max-width: 1100px) {
+  .content__article {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 960px) {
+  .content__article {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 830px) {
+  .content__article {
+    top: 120px;
+    width: 65%;
+    font-size: 0.9em;
+  }
+}
+
+
+/* Loading animation */
+.spinner {
+  position: absolute;
+  z-index: 1100;
+  top: 50%;
+  bottom: auto;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -50px 0 0 -20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  animation: spinner 1s infinite ease-in-out;
+}
+
+/* Tweaks for image loading spinner */
+.spinner_figure {
+  z-index: 100;
+  top: auto;
+  bottom: 135px;
+  left: auto;
+  right: 10px;
+  margin: 0;
+}
+
+@keyframes spinner {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Page transition */
+/* Stylelint rule intentionally disabled to logically group enter/exit animations */
+/* stylelint-disable no-descending-specificity */
+.app__animation-enter .content__article {
+  clip-path: polygon(-75px -30px,
+    -5% -35px,
+    -55% 100%,
+    -310px 100%);
+}
+
+.app__animation-enter.app__animation-enter-active .content__article {
+  clip-path: polygon(-75px -30px,
+    165% -40px,
+    100% 100%,
+    -210px 100%);
+  transition: all 1000ms ease;
+  transition-delay: 1000ms;
+}
+
+.app__animation-exit .content__article {
+  clip-path: polygon(-75px -30px,
+    165% -40px,
+    100% 100%,
+    -210px 100%);
+}
+
+.app__animation-exit.app__animation-exit-active .content__article {
+  clip-path: polygon(-75px -30px,
+    -5% -35px,
+    -55% 100%,
+    -310px 100%);
+  transition: all 1000ms ease;
+}
+
+/* Don't animate nex/prev buttons */
+.app__animation-enter .nav__arrow {
+  opacity: 0;
+}
+
+.app__animation-enter.app__animation-enter-active .nav__arrow {
+  opacity: 1;
+}
+
+.app__animation-exit .nav__arrow {
+  opacity: 1;
+}
+
+.app__animation-exit.app__animation-exit-active .nav__arrow {
+  opacity: 0;
+}

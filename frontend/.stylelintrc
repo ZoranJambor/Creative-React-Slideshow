@@ -1,0 +1,6 @@
+{
+  "extends": "stylelint-config-recommended",
+  "rules": {
+    "number-leading-zero": "always"
+  }
+}
