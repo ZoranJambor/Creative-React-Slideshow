@@ -112,6 +112,11 @@
     .nav__contact {
         font-size: 1.1em;
     }
+
+    .nav__link_back::before {
+        top: 0;
+        height: 15px;
+    }
 }
 
 @media (max-width: 960px) {
@@ -122,6 +127,11 @@
     .nav__contact {
         top: 5.2em;
         font-size: 0.9em;
+    }
+
+    .nav__link_back::before {
+        top: 0px;
+        height: 10px;
     }
 
     .nav__arrow {
@@ -156,6 +166,9 @@
         font-size: 0.75em;
     }
 
+    .nav__link_back::before {
+        background-size: 8px 8px;
+    }
 
     .nav__arrow {
         top: auto;
