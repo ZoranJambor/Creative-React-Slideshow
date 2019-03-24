@@ -21,7 +21,7 @@ const data = [
   {
     title: 'Slide 3',
     html: `
-      <p>You can find more technical details in the Github repo.</p>
+      <p>You can find more technical details on the <a href="https://github.com/ZoranJambor/Creative-React-Slideshow" target="_blank">Github</a>.</p>
       <p><a href="https://twitter.com/zoranjambor" target="_blank" rel="noopener noreferrer">Zoran Jambor</a></p>
     `,
     keyword: 'code',
