@@ -1,4 +1,9 @@
 /* Site-wide CSS rules */
+.content-container {
+  position: relative;
+  z-index: 400;
+}
+
 .content {
   position: absolute;
   left: 0;

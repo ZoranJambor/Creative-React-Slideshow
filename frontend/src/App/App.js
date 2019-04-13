@@ -28,7 +28,7 @@ class App extends Component {
       <section className="app">
         <Loading hide={!this.state.loading} />
         <Nav />
-        <TransitionGroup>
+        <TransitionGroup className="content-container">
           <CSSTransition
             key={this.props.location.pathname}
             timeout={{ enter: 2000, exit: 1000 }}
