@@ -101,4 +101,52 @@ describe('<App />', () => {
     expect(container.querySelector('.content_slide')).not.toBeTruthy();
     expect(container.querySelector('.content_home')).toBeTruthy();
   });
+
+  test('Navigating to the contact page and back using keyboard should work', async () => {
+    const { container, getByText } = app;
+
+    // Simulate 'c' key press, wait for the contact page to animation in
+    fireEvent.keyDown(container, { key: 'c', keyCode: 67 });
+    await waitForElement(() =>
+      container.querySelector('.content_contact.app__animation-enter-done')
+    );
+    expect(container.querySelector('.content_home')).not.toBeTruthy();
+
+    // Verify that the contact page is shown
+    const contactBack = getByText('Back');
+    expect(contactBack).toBeTruthy();
+    const contactContent = container.querySelector('.content_contact');
+    expect(contactContent).toBeTruthy();
+    expect(
+      contactContent.querySelector('.content_contact .content__headline')
+    ).toBeTruthy();
+
+    // Click on the back button and verify that the home page is shown again
+    fireEvent.keyDown(container, { key: 'c', keyCode: 67 });
+    await waitForElement(() =>
+      container.querySelector('.content_home.app__animation-enter-done')
+    );
+    expect(container.querySelector('.content_contact')).not.toBeTruthy();
+    expect(container.querySelector('.content_home')).toBeTruthy();
+  });
+
+  test('Navigating to the slide page and back using keyboard should work', async () => {
+    const { container } = app;
+
+    // Click on the show first slide button and verify slides page is shown
+    fireEvent.keyDown(container, { key: 'ArrowRight', keyCode: 39 });
+    await waitForElement(() =>
+      container.querySelector('.content_slide.app__animation-enter-done')
+    );
+    expect(container.querySelector('.content_home')).not.toBeTruthy();
+    expect(container.querySelector('.content_slide')).toBeTruthy();
+
+    // Click on the back button and verify that the home page is shown again
+    fireEvent.keyDown(container, { key: 'ArrowLeft', keyCode: 37 });
+    await waitForElement(() =>
+      container.querySelector('.content_home.app__animation-enter-done')
+    );
+    expect(container.querySelector('.content_slide')).not.toBeTruthy();
+    expect(container.querySelector('.content_home')).toBeTruthy();
+  });
 });

@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import renderHTML from 'react-render-html';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import data from './Data';
 
 export default class Slide extends Component {
+  constructor(props) {
+    super(props);
+    this.prevButton = React.createRef();
+    this.nextButton = React.createRef();
+  }
+
   /**
    * Returns the current slide number based on the URL
    * @return {Mixed} integer / string
@@ -34,12 +41,20 @@ export default class Slide extends Component {
     }
 
     return (
-      <Link
-        to={'/slide/' + nextSlide + '/#' + data[nextSlide - 1].keyword}
-        className="nav__arrow nav__arrow_next"
-      >
-        <span className="visuallyhidden">Next Slide</span>
-      </Link>
+      <React.Fragment>
+        <Link
+          to={'/slide/' + nextSlide + '/#' + data[nextSlide - 1].keyword}
+          className="nav__arrow nav__arrow_next"
+          innerRef={this.nextButton}
+        >
+          <span className="visuallyhidden">Next Slide</span>
+        </Link>
+        <KeyboardEventHandler
+          handleFocusableElements={true}
+          handleKeys={['right']}
+          onKeyEvent={() => this.nextButton.current.click()}
+        />
+      </React.Fragment>
     );
   };
 
@@ -59,9 +74,20 @@ export default class Slide extends Component {
     }
 
     return (
-      <Link to={to} className="nav__arrow nav__arrow_prev">
-        <span className="visuallyhidden">{text}</span>
-      </Link>
+      <React.Fragment>
+        <Link
+          to={to}
+          className="nav__arrow nav__arrow_prev"
+          innerRef={this.prevButton}
+        >
+          <span className="visuallyhidden">{text}</span>
+        </Link>
+        <KeyboardEventHandler
+          handleFocusableElements={true}
+          handleKeys={['left']}
+          onKeyEvent={() => this.prevButton.current.click()}
+        />
+      </React.Fragment>
     );
   };
 

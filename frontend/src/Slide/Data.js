@@ -21,6 +21,16 @@ const data = [
   {
     title: 'Slide 3',
     html: `
+      <p>You can also navigate using your keyboard. <em>Right Arrow</em> will take you to the next slide, and <em>Left Arrow</em> will take you to the previous one.</p>
+
+      <p>To open the contact page, press <em>c</em> key or <em>Arrow Up</em> and to return to the slides, press <em>c</em> key again or <em>Arrow Down</em>.</p>
+      `,
+    keyword: 'keyboard',
+  },
+
+  {
+    title: 'Slide 4',
+    html: `
       <p>You can find more technical details on the <a href="https://github.com/ZoranJambor/Creative-React-Slideshow" target="_blank">Github</a>.</p>
       <p><a href="https://twitter.com/zoranjambor" target="_blank" rel="noopener noreferrer">Zoran Jambor</a></p>
     `,

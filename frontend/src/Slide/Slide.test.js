@@ -9,7 +9,7 @@ afterEach(cleanup);
 
 describe('<Slide />', () => {
   test('First Slide', async () => {
-    const { getByText, queryByText } = render(
+    const { container, getByText, queryByText } = render(
       <MemoryRouter
         initialEntries={['/slide/1/#mock-keyword-1']}
         initialIndex={0}
@@ -42,6 +42,16 @@ describe('<Slide />', () => {
     expect(getByText('Mock Slide 2')).toBeTruthy();
     expect(getByText('Mock Text 2')).toBeTruthy();
     expect(getByText('Next Slide')).toBeTruthy();
+
+    // Move to the previous slide using keyboard
+    fireEvent.keyDown(container, { key: 'ArrowLeft', keyCode: 37 });
+    expect(getByText('Mock Slide 1')).toBeTruthy();
+    expect(getByText('Mock Text 1')).toBeTruthy();
+
+    // Move to the next slide using keyboard
+    fireEvent.keyDown(container, { key: 'ArrowRight', keyCode: 39 });
+    expect(getByText('Mock Slide 2')).toBeTruthy();
+    expect(getByText('Mock Text 2')).toBeTruthy();
   });
 
   test('Second Slide Initialized', () => {

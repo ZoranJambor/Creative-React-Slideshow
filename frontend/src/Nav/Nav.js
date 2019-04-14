@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import './Nav.css';
 
 const Nav = props => {
   const { pathname, state } = props.location;
+  const contactButton = React.createRef();
   let to = '/contact';
   let text = 'Contact';
   let classModifier = '';
@@ -40,10 +42,17 @@ const Nav = props => {
             state: { navigation: pathname },
           }}
           className={'nav__link' + classModifier}
+          innerRef={contactButton}
         >
           {text}
         </Link>
       </div>
+
+      <KeyboardEventHandler
+        handleFocusableElements={true}
+        handleKeys={['c', 'up', 'down']}
+        onKeyEvent={() => contactButton.current.click()}
+      />
     </header>
   );
 };
