@@ -6,7 +6,7 @@ const Contact = props => (
       <h2 className="content__headline">Contact</h2>
       <div className="content__text">
         <p>
-          You can reach me on my{' '}
+          {'You can reach me on my '}
           <a
             href="https://zoranjambor.com"
             target="_blank"
@@ -40,8 +40,8 @@ const Contact = props => (
             rel="noopener noreferrer"
           >
             CSS Weekly
-          </a>{' '}
-          and{' '}
+          </a>
+          {' and '}
           <a
             href="https://inspiration-bits.com"
             target="_blank"

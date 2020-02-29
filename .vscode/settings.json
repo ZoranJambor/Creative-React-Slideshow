@@ -2,8 +2,12 @@
     "prettier.singleQuote": true,
     "prettier.trailingComma": "es5",
     "files.exclude": {
-        "**/public": false,
+        "**/build": true,
+        "**/node_modules": true,
+        "**/public": false
     },
-    "prettier.stylelintIntegration": true,
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
     "prettier.tabWidth": 2
 }

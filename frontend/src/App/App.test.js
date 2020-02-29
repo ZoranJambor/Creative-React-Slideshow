@@ -6,11 +6,15 @@ import {
   waitForElement,
   fireEvent,
 } from 'react-testing-library';
+import { config } from 'react-transition-group';
 
 import App from './App';
 import photo from '../Figure/MockPhoto.js';
 
 afterEach(cleanup);
+
+// Disable transitions from 'react-transition-group'
+config.disabled = true;
 
 // Mock fetch
 global.fetch = require('jest-fetch-mock');

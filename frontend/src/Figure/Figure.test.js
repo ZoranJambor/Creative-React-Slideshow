@@ -1,10 +1,14 @@
 import React from 'react';
 import { render, cleanup, waitForElement } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
+import { config } from 'react-transition-group';
 
 import Figure from './Figure';
 import photo from './MockPhoto.js';
 global.fetch = require('jest-fetch-mock');
+
+// Disable transitions from 'react-transition-group'
+config.disabled = true;
 
 afterEach(cleanup);
 
@@ -21,7 +25,7 @@ test('<Figure />', async () => {
 
   const { container } = render(
     <MemoryRouter>
-      <Figure initializeApp={() => {}} />
+      <Figure setLoading={() => {}} />
     </MemoryRouter>
   );
   expect(container).toBeTruthy();

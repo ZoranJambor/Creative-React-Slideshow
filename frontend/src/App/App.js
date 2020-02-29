@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -11,41 +11,32 @@ import Contact from '../Contact/Contact';
 import NotFound from '../NotFound/NotFound';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
-
+const App = props => {
   // App is initialized when the first photo is loaded,
   // so we're passing this to the <Figure /> component
-  initializeApp = () => {
-    this.setState({ loading: false });
-  };
+  const [loading, setLoading] = useState(true);
 
-  render() {
-    return (
-      <section className="app">
-        <Loading hide={!this.state.loading} />
-        <Nav />
-        <TransitionGroup className="content-container">
-          <CSSTransition
-            key={this.props.location.pathname}
-            timeout={{ enter: 2000, exit: 1000 }}
-            classNames={'app__animation'}
-          >
-            <Switch location={this.props.location}>
-              <Route exact path="/" component={Home} />
-              <Route path="/slide/:slideId" component={Slide} />
-              <Route path="/contact" component={Contact} />
-              <Route component={NotFound} />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
-        <Figure initializeApp={this.initializeApp} />
-      </section>
-    );
-  }
-}
+  return (
+    <section className="app">
+      <Loading hide={!loading} />
+      <Nav />
+      <TransitionGroup className="content-container">
+        <CSSTransition
+          key={props.location.pathname}
+          timeout={{ enter: 2000, exit: 1000 }}
+          classNames={'app__animation'}
+        >
+          <Switch location={props.location}>
+            <Route exact path="/" component={Home} />
+            <Route path="/slide/:slideId" component={Slide} />
+            <Route path="/contact" component={Contact} />
+            <Route component={NotFound} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
+      <Figure setLoading={setLoading} />
+    </section>
+  );
+};
 
 export default withRouter(App);

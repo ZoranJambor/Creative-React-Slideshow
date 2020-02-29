@@ -4,6 +4,7 @@
   "private": false,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "eslint-plugin-react-hooks": "^2.4.0",
     "jest-fetch-mock": "^2.1.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.6",
@@ -12,7 +13,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.3.1",
     "react-testing-library": "^6.0.0",
-    "react-transition-group": "^2.6.0",
+    "react-transition-group": "^4.3.0",
     "stylelint-config-recommended": "^2.1.0"
   },
   "scripts": {
@@ -25,7 +26,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   },
   "browserslist": [
     ">0.2%",
