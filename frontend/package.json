@@ -11,13 +11,13 @@
     "react-keyboard-event-handler": "^1.4.1",
     "react-render-html": "^0.6.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.3.1",
+    "react-scripts": "3.4.1",
     "react-testing-library": "^6.0.0",
     "react-transition-group": "^4.3.0",
     "stylelint-config-recommended": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start & node ../backend/server.js",
+    "start": "node ../backend/server.js & react-scripts start",
     "start-concurrently": "concurrently \"npm:start-server\" \"npm:start-react\"",
     "start-react": "react-scripts start",
     "start-server": "node ../backend/server.js",
